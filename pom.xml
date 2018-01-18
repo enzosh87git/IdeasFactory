@@ -63,18 +63,4 @@
 		</dependency>
   </dependencies>
 
-<!--  
-  <build>
-  <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-war-plugin</artifactId>
-      <version>3.0.0</version>
-      <configuration>
-        <webappDirectory>src/main/webapp</webappDirectory>		<!-- solve failonMissingWebXml error-->
-      </configuration>
-    </plugin>
-  </plugins>
-</build>
---> 
 </project>
