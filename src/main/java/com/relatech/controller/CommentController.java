@@ -15,27 +15,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.relatech.model.Comment;
+
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
 	
+	@GetMapping("/getmodel")
+	public Comment getmodel() {return new Comment(); }
+	
 	@PostMapping("/add")
 	public ResponseEntity<Comment> addComment(@RequestBody Comment comment) {
+		return null;
 		
 	}
 	
 	@PutMapping("/update")
 	public ResponseEntity<Comment> updateComment(@RequestBody Comment comment) {
+		return null;
 		
 	}
 	
 	@DeleteMapping("/delete") 
 	public ResponseEntity<Comment> deleteComment (@RequestBody Comment comment) {
+		return null;
 			
 	}
 	
 	@GetMapping("/getList")
 	public ResponseEntity<List<Comment>> getListComments () {
+		return null;
 				
 	}
 	

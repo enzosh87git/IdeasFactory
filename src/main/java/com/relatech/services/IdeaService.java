@@ -1,12 +1,16 @@
 package com.relatech.services;
 
+import java.util.List;
+
+import com.relatech.model.Idea;
+
 public interface IdeaService {
 	
-	Idea addIdea(Idea idea);
+	Idea add(Idea idea);
 	
-	Idea updateIdea(Idea idea);
+	Idea update(Idea idea);
 	
-	void deleteIdea(Idea idea);
+	void delete(Idea idea);
 	
-	List<Idea> getListIdeas();
+	List<Idea> getList();
 }

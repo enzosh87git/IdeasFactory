@@ -1,4 +1,4 @@
-package it.team.dao;
+package com.relatech.dao;
 
 import java.util.List;
 
@@ -14,27 +14,25 @@ import com.relatech.model.User;
 @Transactional
 public class UserDaoImpl extends AbstractDao implements UserDao {
 
-	@Override
 	public User addUser(User user) {
-		persist(user);
-		return user;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	@SuppressWarnings("unchecked")
 	public List<User> getListUsers() {
-		return getSession().createCriteria(User.class).list();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
 	public User updateUser(User user) {
-		update(user);
-		return user;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
 	public void deleteUser(User user) {
-		delete(user);
+		// TODO Auto-generated method stub
+		
 	}
 
+	
 }

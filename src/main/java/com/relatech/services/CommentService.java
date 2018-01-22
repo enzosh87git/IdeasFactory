@@ -2,14 +2,16 @@ package com.relatech.services;
 
 import java.util.List;
 
+import com.relatech.model.Comment;
+
 public interface CommentService {
 
-	Comment addComment(Comment comment);
+	Comment add(Comment comment);
 
-	List<Comment> getListComments();
+	List<Comment> getList();
 
-	Comment updateComment(Comment comment);
+	Comment update(Comment comment);
 
-	void deleteComment(Comment comment);
+	void delete(Comment comment);
 
 }

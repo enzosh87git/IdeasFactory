@@ -2,18 +2,22 @@ package com.relatech.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Idea {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	private String text;
@@ -22,8 +26,9 @@ public class Idea {
 	private double voteaverage;
 	private int votecounter;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "idea", fetch = FetchType.EAGER )
-	private ArrayList<Comment> comlist;
+	private List<Comment> comlist;
 	
 	//--------------------------------------------------------------
 	public Idea() { this.comlist = new ArrayList<Comment>(); 
@@ -68,11 +73,16 @@ public class Idea {
 		this.votecounter = votecounter;
 	}
 	
-	public ArrayList<Comment> getComlist() {
+	public List<Comment> getComlist() {
 		return comlist;
 	}
-	public void setComlist(ArrayList<Comment> comlist) {
+	public void setComlist(List<Comment> comlist) {
 		this.comlist = comlist;
+	}
+	@Override
+	public String toString() {
+		return "Idea [id=" + id + ", text=" + text + ", ldt=" + ldt + ", accepted=" + accepted + ", voteaverage="
+				+ voteaverage + ", votecounter=" + votecounter + "]";
 	}
 
 }

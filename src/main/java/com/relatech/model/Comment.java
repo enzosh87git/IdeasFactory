@@ -5,25 +5,32 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.relatech.model.Idea;
 
 @Entity
 public class Comment {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	private String text;
 	private LocalDateTime ldt;	
 	private boolean accepted;
 
+	@JsonIgnore
 	@ManyToOne( fetch = FetchType.EAGER )
 	private Idea idea;
 
 	//--------------------------------------------------------------
-	public Comment() {	this.accepted = false;}
+	public Comment() {
+		this.accepted = false;
+	}
 
 	public int getId() {
 		return id;
@@ -63,6 +70,12 @@ public class Comment {
 
 	public void setIdea(Idea idea) {
 		this.idea = idea;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", text=" + text + ", ldt=" + ldt + ", accepted=" + accepted + ", idea=" + idea
+				+ "]";
 	}
 	
 }

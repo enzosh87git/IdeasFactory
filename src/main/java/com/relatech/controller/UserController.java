@@ -15,27 +15,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.relatech.model.User;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
 	
+	@GetMapping("/getmodel")
+	public User getmodel() {return new User(); }
+	
 	@PostMapping("/add")
 	public ResponseEntity<User> addUser(@RequestBody User user) {
+		return null;
 		
 	}
 	
 	@PutMapping("/update")
 	public ResponseEntity<User> updateUser(@RequestBody User user) {
+		return null;
 		
 	}
 	
 	@DeleteMapping("/delete") 
 	public ResponseEntity<User> deleteUser (@RequestBody User user) {
+		return null;
 			
 	}
 	
 	@GetMapping("/listUsers")
 	public ResponseEntity<List<User>> getListUsers () {
+		return null;
 				
 	}
 	

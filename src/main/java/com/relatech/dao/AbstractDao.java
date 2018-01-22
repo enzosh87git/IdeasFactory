@@ -14,16 +14,12 @@ public abstract class AbstractDao {
 	}
 
 	public void persist(Object obj) {
-		getSession().persist(obj);
+		getSession().saveOrUpdate(obj);
 
 	}
 
 	public void delete(Object obj) {
 		getSession().delete(obj);
 	}
-
-	public void update(Object obj) {
-		getSession().update(obj);
-	}
-
+	
 }

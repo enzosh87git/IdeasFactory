@@ -1,6 +1,8 @@
 package com.relatech.dao;
 
-import java.time.LocalDate;
+import java.util.List;
+
+import com.relatech.model.Idea;
 
 public interface IdeaDao {
 	

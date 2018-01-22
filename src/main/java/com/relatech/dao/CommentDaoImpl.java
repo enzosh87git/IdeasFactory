@@ -1,4 +1,4 @@
-package come.relatech.dao;
+package com.relatech.dao;
 
 import java.util.List;
 
@@ -8,31 +8,30 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import com.relatech.model.Comment;
+
 @Repository
 @Transactional
 public class CommentDaoImpl extends AbstractDao implements CommentDao {
 
-	@Override
 	public Comment addComment(Comment comment) {
-		persist(comment);
-		return comment;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	@SuppressWarnings("unchecked")
 	public List<Comment> getListComments() {
-		return getSession().createCriteria(Comment.class).list();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
 	public Comment updateComment(Comment comment) {
-		update(comment);
-		return comment;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
 	public void deleteComment(Comment comment) {
-		delete(comment);
+		// TODO Auto-generated method stub
+		
 	}
 
 }

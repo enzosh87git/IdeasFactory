@@ -2,14 +2,16 @@ package com.relatech.services;
 
 import java.util.List;
 
+import com.relatech.model.User;
+
 public interface UserService {
 
-	User addUser(User user);
+	User add(User user);
 
-	List<User> getListUsers();
+	List<User> getList();
 
-	User updateUser(User user);
+	User update(User user);
 
-	void deleteUser(User user);
+	void delete(User user);
 
 }

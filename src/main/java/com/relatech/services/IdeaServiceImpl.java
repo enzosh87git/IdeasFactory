@@ -6,31 +6,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.relatech.dao.IdeaDao;
+import com.relatech.model.Idea;
+
 @Service
 public class IdeaServiceImpl implements IdeaService {
-	
-	@Autowired
-	private IdeaDao dao;
 
-	@Override
-	public Idea addIdea(Idea idea) {
-		return dao.addIdea(idea);
+	public Idea add(Idea idea) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	public Idea updateIdea(Idea idea) {
-		return dao.updateIdea(idea);
+	public Idea update(Idea idea) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	public void deleteIdea(Idea idea) {
-		dao.deleteIdea(idea);
-
+	public void delete(Idea idea) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	@Override
-	public List<Idea> getListIdeas() {
-		return dao.getListIdeas();
+
+	public List<Idea> getList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
