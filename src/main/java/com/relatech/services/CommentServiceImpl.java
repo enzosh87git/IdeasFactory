@@ -11,26 +11,19 @@ import com.relatech.model.Comment;
 @Service
 public class CommentServiceImpl implements CommentService {
 
-
-	public Comment add(Comment comment) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Comment> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Comment update(Comment comment) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void delete(Comment comment) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	@Autowired
+	private CommentDao cdao;
 	
+	@Override
+	public Comment save(Comment comment) { return cdao.addComment(comment);	}
+
+	@Override
+	public Comment getId(int id) { return cdao.findComment(id); }
+
+	@Override
+	public Comment deleteId(int id) { return cdao.deleteComment(id); }
+
+	@Override
+	public List<Comment> list() {return cdao.getListComments(); }
+
 }

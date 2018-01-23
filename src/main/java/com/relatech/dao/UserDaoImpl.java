@@ -14,25 +14,29 @@ import com.relatech.model.User;
 @Transactional
 public class UserDaoImpl extends AbstractDao implements UserDao {
 
+	@Override
 	public User addUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		persist(user);
+		return user;
 	}
 
-	public List<User> getListUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public User deleteUser(int id) {
+		User user = findUser(id); 
+		delete(user); 
+		return user;
 	}
 
-	public User updateUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
+	public List<User> getListUsers() { return getSession().createCriteria(User.class).list(); }
 
-	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-		
+	@SuppressWarnings("deprecation")
+	@Override
+	public User findUser(int id) {
+		Criteria c = getSession().createCriteria(User.class);
+		c.add(Restrictions.eq("id", id));
+		return (User) c.uniqueResult();
 	}
-
 	
 }

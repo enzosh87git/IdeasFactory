@@ -11,24 +11,20 @@ import com.relatech.model.User;
 @Service
 public class UserServiceImpl implements UserService {
 
-	public User add(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	@Autowired
+	private UserDao usdao;
+	
+	@Override
+	public User add(User user) { return usdao.addUser(user); }
 
-	public List<User> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Override
+	public List<User> getList() { return usdao.getListUsers(); }
 
-	public User update(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Override
+	public User delete(int id) { return usdao.deleteUser(id); }
 
-	public void delete(User user) {
-		// TODO Auto-generated method stub
-		
-	}
+	@Override
+	public User findUser(int id) { return usdao.findUser(id); }
 
 }

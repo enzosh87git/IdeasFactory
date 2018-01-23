@@ -16,7 +16,7 @@ import com.relatech.model.Idea;
 public class Comment {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
 	
 	private String text;
@@ -70,12 +70,6 @@ public class Comment {
 
 	public void setIdea(Idea idea) {
 		this.idea = idea;
-	}
-
-	@Override
-	public String toString() {
-		return "Comment [id=" + id + ", text=" + text + ", ldt=" + ldt + ", accepted=" + accepted + ", idea=" + idea
-				+ "]";
 	}
 	
 }

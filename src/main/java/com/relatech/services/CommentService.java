@@ -6,12 +6,11 @@ import com.relatech.model.Comment;
 
 public interface CommentService {
 
-	Comment add(Comment comment);
+	Comment save(Comment comment);
 
-	List<Comment> getList();
+	Comment getId(int id);
 
-	Comment update(Comment comment);
+	Comment deleteId(int id);
 
-	void delete(Comment comment);
-
+	List<Comment> list();
 }

@@ -1,10 +1,10 @@
 package com.relatech.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.relatech.model.UserProfile;
@@ -13,10 +13,12 @@ import com.relatech.model.UserProfile;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
 
+	@Column(unique = true)
 	private String username;
+	
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
@@ -54,11 +56,6 @@ public class User {
 
 	public void setUsprof(UserProfile usprof) {
 		this.usprof = usprof;
-	}
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", usprof=" + usprof + "]";
 	}
 	
 }

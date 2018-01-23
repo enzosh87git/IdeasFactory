@@ -14,24 +14,31 @@ import com.relatech.model.Comment;
 @Transactional
 public class CommentDaoImpl extends AbstractDao implements CommentDao {
 
+	@Override
 	public Comment addComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return null;
+		persist(comment);
+		return comment;
 	}
 
-	public List<Comment> getListComments() {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public Comment deleteComment(int id) {
+		Comment comment = findComment(id); 
+		delete(comment); 
+		return comment;
 	}
 
-	public Comment updateComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings({ "deprecation", "unchecked" })
+	@Override
+	public List<Comment> getListComments() { 
+		return getSession().createCriteria(Comment.class).list(); 
 	}
 
-	public void deleteComment(Comment comment) {
-		// TODO Auto-generated method stub
-		
+	@SuppressWarnings("deprecation")
+	@Override
+	public Comment findComment(int id) {
+		Criteria c = getSession().createCriteria(Comment.class);
+		c.add(Restrictions.eq("id", id));
+		return (Comment) c.uniqueResult();
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.relatech.services;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +14,21 @@ import com.relatech.model.Idea;
 @Service
 public class IdeaServiceImpl implements IdeaService {
 
-	public Idea add(Idea idea) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Idea update(Idea idea) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void delete(Idea idea) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public List<Idea> getList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@Autowired
+	private IdeaDao idao;
 	
+	@Override
+	public Idea save(Idea idea) { 
+		idea.setTime(Timestamp.from(Instant.now()));
+		return idao.addIdea(idea); }
+
+	@Override
+	public Idea deleteId(int id) { return idao.deleteIdea(id); }
+
+	@Override
+	public Idea getId(int id) { return idao.findIdea(id); }
+
+	@Override
+	public List<Idea> list() { return idao.getListIdeas(); }
+
 }

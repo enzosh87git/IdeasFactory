@@ -6,11 +6,11 @@ import com.relatech.model.Idea;
 
 public interface IdeaService {
 	
-	Idea add(Idea idea);
+	Idea save(Idea idea);
 	
-	Idea update(Idea idea);
+	Idea getId(int id);
 	
-	void delete(Idea idea);
+	Idea deleteId(int id);
 	
-	List<Idea> getList();
+	List<Idea> list();
 }

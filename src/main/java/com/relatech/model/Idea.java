@@ -1,5 +1,6 @@
 package com.relatech.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -17,11 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Idea {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private int id;
 	
 	private String text;
-	private LocalDateTime ldt;	
+	
+	private Timestamp time;	
+	
 	private boolean accepted;
 	private double voteaverage;
 	private int votecounter;
@@ -48,12 +50,15 @@ public class Idea {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public LocalDateTime getLdt() {
-		return ldt;
+
+	public Timestamp getTime() {
+		return time;
 	}
-	public void setLdt(LocalDateTime ldt) {
-		this.ldt = ldt;
+
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
+
 	public boolean isAccepted() {
 		return accepted;
 	}
@@ -78,11 +83,6 @@ public class Idea {
 	}
 	public void setComlist(List<Comment> comlist) {
 		this.comlist = comlist;
-	}
-	@Override
-	public String toString() {
-		return "Idea [id=" + id + ", text=" + text + ", ldt=" + ldt + ", accepted=" + accepted + ", voteaverage="
-				+ voteaverage + ", votecounter=" + votecounter + "]";
 	}
 
 }

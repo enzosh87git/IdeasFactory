@@ -1,6 +1,5 @@
 package com.relatech.dao;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -15,25 +14,31 @@ import com.relatech.model.Idea;
 @Transactional
 public class IdeaDaoImpl extends AbstractDao implements IdeaDao {
 
+	@Override
 	public Idea addIdea(Idea idea) {
-		// TODO Auto-generated method stub
-		return null;
+		persist(idea);
+		return idea;
 	}
 
-	public Idea updateIdea(Idea idea) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public Idea deleteIdea(int id) {
+		Idea idea = findIdea(id); 
+		delete(idea); 
+		return idea;
 	}
 
-	public void deleteIdea(Idea idea) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	@Override
 	public List<Idea> getListIdeas() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createCriteria(Idea.class).list();
 	}
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public Idea findIdea(int id) {
+		Criteria c = getSession().createCriteria(Idea.class);
+		c.add(Restrictions.eq("id", id));
+		return (Idea) c.uniqueResult();
+	}
 	
 }
