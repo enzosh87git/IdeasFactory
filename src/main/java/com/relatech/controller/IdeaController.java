@@ -31,7 +31,7 @@ public class IdeaController {
 	@GetMapping("/getmodel")
 	public Idea getmodel() { return new Idea(); } 
 	
-	@PostMapping("/save")
+	@PostMapping
 	public ResponseEntity<Idea> saveUpdate( @RequestBody Idea c ){
 		try {
 				log.info("Saved");
@@ -42,7 +42,7 @@ public class IdeaController {
 		}
 	}
 	
-	@GetMapping("/getlist")
+	@GetMapping
 	public ResponseEntity<List<Idea>> list(){
 		try {	
 				log.info("List");
@@ -53,13 +53,8 @@ public class IdeaController {
 		}
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Idea> updateIdea(@RequestBody Idea idea) {
-		return null;
-		
-	}
 	
-	@DeleteMapping("/delete/{id}") 
+	@DeleteMapping("/{id}") 
 	public ResponseEntity<Idea> deleteIdea (@PathVariable("id") int id) {
 		try {	
 			log.info("Deleted");

@@ -32,7 +32,7 @@ private Logger log = LoggerFactory.getLogger(this.getClass());
 	@GetMapping("/getmodel")
 	public Comment getmodel() { return new Comment(); } 
 	
-	@PostMapping("/save")
+	@PostMapping
 	public ResponseEntity<Comment> saveUpdate( @RequestBody Comment c ){
 		try {
 				log.info("Saved");
@@ -43,7 +43,7 @@ private Logger log = LoggerFactory.getLogger(this.getClass());
 		}
 	}
 	
-	@GetMapping("/getlist")
+	@GetMapping
 	public ResponseEntity<List<Comment>> list(){
 		try {	
 				log.info("List");
@@ -54,7 +54,7 @@ private Logger log = LoggerFactory.getLogger(this.getClass());
 		}
 	}
 	
-	@DeleteMapping("/delete/{id}") 
+	@DeleteMapping("/{id}") 
 	public ResponseEntity<Comment> deleteComment(@PathVariable("id") int id) {
 		try {	
 			log.info("Deleted");

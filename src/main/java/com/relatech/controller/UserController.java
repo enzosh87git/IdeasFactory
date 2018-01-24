@@ -31,8 +31,22 @@ public class UserController {
 	
 	@GetMapping("/getmodel")
 	public User getmodel() {return new User(); }
+
+	// GET
+	@GetMapping
+	public ResponseEntity<List<User>> getListUsers () {
+		try {	
+			log.info("List");
+			return new ResponseEntity<List<User>>( userv.getList(), HttpStatus.OK ); 
+	}catch(Exception e) {
+			log.error(e.getMessage());
+			return new ResponseEntity<List<User>>( userv.getList(), HttpStatus.INTERNAL_SERVER_ERROR );
+	}
+				
+	}
 	
-	@PostMapping("/save")
+	// POST E PUT
+	@PostMapping
 	public ResponseEntity<User> saveUpdate(@RequestBody User user) {
 		try {
 			log.info("Saved");
@@ -44,7 +58,8 @@ public class UserController {
 		
 	}
 	
-	@DeleteMapping("/delete/{id}") 
+	// DELETE
+	@DeleteMapping("/{id}") 
 	public ResponseEntity<User> deleteUser (@PathVariable("id") int id) {
 		try {	
 			log.info("Deleted");
@@ -56,16 +71,6 @@ public class UserController {
 			
 	}
 	
-	@GetMapping("/listUsers")
-	public ResponseEntity<List<User>> getListUsers () {
-		try {	
-			log.info("List");
-			return new ResponseEntity<List<User>>( userv.getList(), HttpStatus.OK ); 
-	}catch(Exception e) {
-			log.error(e.getMessage());
-			return new ResponseEntity<List<User>>( userv.getList(), HttpStatus.INTERNAL_SERVER_ERROR );
-	}
-				
-	}
+	
 	
 }

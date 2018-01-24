@@ -1,5 +1,7 @@
 package com.relatech.services;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,9 @@ public class CommentServiceImpl implements CommentService {
 	private CommentDao cdao;
 	
 	@Override
-	public Comment save(Comment comment) { return cdao.addComment(comment);	}
+	public Comment save(Comment comment) { 
+		comment.setDateComment(Timestamp.from(Instant.now()));
+		return cdao.addComment(comment);	}
 
 	@Override
 	public Comment getId(int id) { return cdao.findComment(id); }

@@ -2,7 +2,6 @@ package com.relatech.services;
 
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class IdeaServiceImpl implements IdeaService {
 	
 	@Override
 	public Idea save(Idea idea) { 
-		idea.setTime(Timestamp.from(Instant.now()));
+		idea.setDateIdea(Timestamp.from(Instant.now()));
 		return idao.addIdea(idea); }
 
 	@Override

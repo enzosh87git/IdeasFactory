@@ -1,16 +1,18 @@
 package com.relatech.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.relatech.model.Idea;
+import com.relatech.util.JsonDateSerializer;
 
 @Entity
 public class Comment {
@@ -20,7 +22,10 @@ public class Comment {
 	private int id;
 	
 	private String text;
-	private LocalDateTime ldt;	
+	
+	@JsonSerialize(using = JsonDateSerializer.class)
+	private Timestamp dateComment;	
+	
 	private boolean accepted;
 
 	@JsonIgnore
@@ -48,12 +53,12 @@ public class Comment {
 		this.text = text;
 	}
 
-	public LocalDateTime getLdt() {
-		return ldt;
+	public Timestamp getDateComment() {
+		return dateComment;
 	}
 
-	public void setLdt(LocalDateTime ldt) {
-		this.ldt = ldt;
+	public void setDateComment(Timestamp dateComment) {
+		this.dateComment = dateComment;
 	}
 
 	public boolean isAccepted() {

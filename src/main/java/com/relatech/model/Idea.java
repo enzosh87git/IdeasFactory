@@ -1,7 +1,6 @@
 package com.relatech.model;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.relatech.util.JsonDateSerializer;
 
 @Entity
 public class Idea {
@@ -22,7 +23,8 @@ public class Idea {
 	
 	private String text;
 	
-	private Timestamp time;	
+	@JsonSerialize(using = JsonDateSerializer.class)
+	private Timestamp dateIdea;	
 	
 	private boolean accepted;
 	private double voteaverage;
@@ -51,12 +53,12 @@ public class Idea {
 		this.text = text;
 	}
 
-	public Timestamp getTime() {
-		return time;
+	public Timestamp getDateIdea() {
+		return dateIdea;
 	}
 
-	public void setTime(Timestamp time) {
-		this.time = time;
+	public void setDateIdea(Timestamp dateIdea) {
+		this.dateIdea = dateIdea;
 	}
 
 	public boolean isAccepted() {
