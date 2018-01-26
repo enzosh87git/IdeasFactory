@@ -7,6 +7,8 @@ import com.relatech.model.Idea;
 public interface IdeaDao {
 
 	Idea addIdea(Idea idea);
+	
+	Idea updateIdea(Idea idea);
 
 	Idea deleteIdea(int id);
 

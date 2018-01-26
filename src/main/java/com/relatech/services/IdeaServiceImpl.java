@@ -30,4 +30,7 @@ public class IdeaServiceImpl implements IdeaService {
 	@Override
 	public List<Idea> list() { return idao.getListIdeas(); }
 
+	@Override
+	public Idea update(Idea idea) { return idao.updateIdea(idea); }
+
 }

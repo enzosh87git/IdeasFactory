@@ -27,4 +27,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUser(int id) { return usdao.findUser(id); }
 
+	@Override
+	public User update(User user) { return usdao.updateUser(user); }
+
 }

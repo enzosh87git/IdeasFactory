@@ -25,7 +25,7 @@ import com.relatech.services.UserServiceImpl;
 public class UserController {
 	
 	@Autowired
-	private UserServiceImpl userv;
+	private UserService userv;
 	
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	

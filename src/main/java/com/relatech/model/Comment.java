@@ -29,7 +29,7 @@ public class Comment {
 	private boolean accepted;
 
 	@JsonIgnore
-	@ManyToOne( fetch = FetchType.EAGER )
+	@ManyToOne( fetch = FetchType.LAZY )
 	private Idea idea;
 
 	//--------------------------------------------------------------
@@ -76,5 +76,11 @@ public class Comment {
 	public void setIdea(Idea idea) {
 		this.idea = idea;
 	}
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", text=" + text + ", dateComment=" + dateComment + ", accepted=" + accepted + "]";
+	}
+	
 	
 }

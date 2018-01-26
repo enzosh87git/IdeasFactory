@@ -38,5 +38,11 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 		c.add(Restrictions.eq("id", id));
 		return (User) c.uniqueResult();
 	}
+
+	@Override
+	public User updateUser(User user) {
+		update(user);
+		return user;
+	}
 	
 }

@@ -41,4 +41,10 @@ public class CommentDaoImpl extends AbstractDao implements CommentDao {
 		return (Comment) c.uniqueResult();
 	}
 
+	@Override
+	public Comment updateComment(Comment comment) {
+		update(comment);
+		return comment;
+	}
+
 }

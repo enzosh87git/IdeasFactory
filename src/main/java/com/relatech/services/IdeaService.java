@@ -8,6 +8,8 @@ public interface IdeaService {
 	
 	Idea save(Idea idea);
 	
+	Idea update(Idea idea);
+	
 	Idea getId(int id);
 	
 	Idea deleteId(int id);

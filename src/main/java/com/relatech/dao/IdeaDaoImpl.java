@@ -5,6 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -27,18 +28,27 @@ public class IdeaDaoImpl extends AbstractDao implements IdeaDao {
 		return idea;
 	}
 
-	@SuppressWarnings({ "unchecked", "deprecation" })
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Idea> getListIdeas() {
-		return getSession().createCriteria(Idea.class).list();
+		//return getSession().createCriteria(Idea.class).list();
+		Criteria c = getSession().createCriteria(Idea.class);
+		//c.setProjection(Projections.distinct(Projections.property("id")));
+		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return c.list();
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public Idea findIdea(int id) {
 		Criteria c = getSession().createCriteria(Idea.class);
 		c.add(Restrictions.eq("id", id));
 		return (Idea) c.uniqueResult();
+	}
+
+	@Override
+	public Idea updateIdea(Idea idea) {
+		update(idea);
+		return idea;
 	}
 	
 }

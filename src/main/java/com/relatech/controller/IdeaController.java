@@ -11,20 +11,21 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.relatech.model.Comment;
 import com.relatech.model.Idea;
-import com.relatech.services.IdeaServiceImpl;
+import com.relatech.services.IdeaService;
 
+//@CrossOrigin (origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/idea")
 public class IdeaController {
 	
 	@Autowired
-	private IdeaServiceImpl idserv;
+	private IdeaService idserv;
 	
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
@@ -53,6 +54,16 @@ public class IdeaController {
 		}
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<Idea> getIdea( @PathVariable("id") int id){
+		try {	
+				log.info("List");
+				return new ResponseEntity<Idea>( idserv.getId(id), HttpStatus.OK ); 
+		}catch(Exception e) {
+				log.error(e.getMessage());
+				return new ResponseEntity<Idea>( idserv.getId(id), HttpStatus.INTERNAL_SERVER_ERROR );
+		}
+	}
 	
 	@DeleteMapping("/{id}") 
 	public ResponseEntity<Idea> deleteIdea (@PathVariable("id") int id) {
@@ -62,8 +73,19 @@ public class IdeaController {
 	}catch(Exception e) {
 			log.error(e.getMessage());
 			return new ResponseEntity<Idea>( idserv.deleteId(id), HttpStatus.INTERNAL_SERVER_ERROR );
-	}
-			
+	}	}
+	
+	@GetMapping("comlist/{id}")
+	public ResponseEntity<List<Comment>> listcomment( @PathVariable("id") int id ){
+		List<Comment> cl = null;
+		try {	
+				cl = idserv.getId(id).getComlist();
+				log.info("List");
+				return new ResponseEntity<List<Comment>>( cl, HttpStatus.OK ); 
+		}catch(Exception e) {
+				log.error(e.getMessage());
+				return new ResponseEntity<List<Comment>>( cl, HttpStatus.INTERNAL_SERVER_ERROR );
+		}
 	}
 	
 }

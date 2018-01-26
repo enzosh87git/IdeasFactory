@@ -8,6 +8,8 @@ public interface CommentService {
 
 	Comment save(Comment comment);
 
+	Comment update(Comment comment);
+	
 	Comment getId(int id);
 
 	Comment deleteId(int id);

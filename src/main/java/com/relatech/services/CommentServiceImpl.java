@@ -30,4 +30,9 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public List<Comment> list() {return cdao.getListComments(); }
 
+	@Override
+	public Comment update(Comment comment) {
+		return cdao.updateComment(comment);
+	}
+
 }

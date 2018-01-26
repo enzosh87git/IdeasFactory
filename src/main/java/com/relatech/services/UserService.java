@@ -8,6 +8,8 @@ public interface UserService {
 
 	User add(User user);
 
+	User update(User user);
+	
 	List<User> getList();
 	
 	User findUser(int id);

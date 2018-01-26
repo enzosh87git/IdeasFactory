@@ -8,6 +8,8 @@ import com.relatech.model.Idea;
 public interface CommentDao {
 
 	Comment addComment(Comment comment);
+	
+	Comment updateComment(Comment comment);
 
 	Comment deleteComment(int id);
 

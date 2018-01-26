@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,8 +31,8 @@ public class Idea {
 	private double voteaverage;
 	private int votecounter;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "idea", fetch = FetchType.EAGER )
+	//@JsonIgnore
+	@OneToMany(mappedBy = "idea", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE )
 	private List<Comment> comlist;
 	
 	//--------------------------------------------------------------
@@ -87,4 +88,11 @@ public class Idea {
 		this.comlist = comlist;
 	}
 
+	@Override
+	public String toString() {
+		return "Idea [id=" + id + ", text=" + text + ", dateIdea=" + dateIdea + ", accepted=" + accepted
+				+ ", voteaverage=" + voteaverage + ", votecounter=" + votecounter + "]";
+	}
+
+	
 }
