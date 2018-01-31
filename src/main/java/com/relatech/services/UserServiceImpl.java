@@ -30,4 +30,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User update(User user) { return usdao.updateUser(user); }
 
+	@Override
+	public User findUsername(String username) { return usdao.getUserName(username); }
+
 }

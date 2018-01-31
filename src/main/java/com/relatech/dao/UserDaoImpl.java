@@ -44,5 +44,12 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
 		update(user);
 		return user;
 	}
+
+	@Override
+	public User getUserName(String username) {
+		Criteria c = getSession().createCriteria(User.class);
+		c.add(Restrictions.eq("username", username));
+		return (User) c.uniqueResult();
+	}
 	
 }
